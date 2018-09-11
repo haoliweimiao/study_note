@@ -1,0 +1,21 @@
+Q：报错：Invariant Violation: Element type is invalid
+
+A：如果是引入新组件时报的错，据@tdzl2003 解释:
+从ReactNative 0.16起，babel升级到了6.x版本。
+在babel6中，require和export default不能直接配对使用。
+所以，你要么把
+
+var Hello = require('./components/Hello');
+
+改为
+
+import Hello from './components'
+
+要么把
+
+export default React.createClass({
+
+改为
+
+module.exports = React.createClass({
+

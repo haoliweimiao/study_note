@@ -1,0 +1,40 @@
+react-native-community/react-native-svg
+https://github.com/react-native-community/react-native-svg
+
+
+#########################################
+Install library from npm
+
+npm install react-native-svg --save
+
+#########################################
+
+Link native code
+
+react-native link react-native-svg
+
+Or use rnpm instead:
+
+rnpm link react-native-svg
+
+#########################################
+Android
+    npm install react-native-svg --save
+
+    Append the following lines to android/settings.gradle:
+
+    include ':react-native-svg'
+    project(':react-native-svg').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-svg/android')
+
+    Insert the following lines inside the dependencies block in android/app/build.gradle:
+
+    compile project(':react-native-svg')
+
+
+    Open up `android/app/src/main/java/[...]/MainApplication.java
+
+    Add import com.horcrux.svg.SvgPackage; to the imports at the top of the file
+    Add new SvgPackage() to the list returned by the getPackages() method. Add a comma to the previous item if there's already something there.
+
+
+

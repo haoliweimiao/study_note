@@ -1,0 +1,72 @@
+1.npm i mobx mobx-react --save //引入mobx
+2.npm i babel-plugin-transform-decorators-legacy babel-preset-react-native-stage-0 --save-dev //能够使用@标签
+3.在.babelrc文件中修改为
+{
+"presets": ["react-native"],
+"plugins": ["transform-decorators-legacy"]
+}
+
+配置完成后运行程序标签报错,点击STOP按钮停止运行,再次运行即可
+
+
+
+@observable: 使用此标签监控要检测的数据；
+@observer: 使用此标签监控当数据变化是要更新的Component（组件类）
+@action:使用此标签监控数据改变的自定义方法(当在需要数据改变的时候执行此自定义方法，那么View层也会跟着自动变化，默认此View层已经使用@observer标签监控)
+
+
+############################################
+
+
+
+
+import {observable, autorun, computed, action, useStrict, runInAction} from 'mobx';
+import {observer} from 'mobx-react';
+
+
+
+#################################
+const value = observable(0);//输出0
+const number = observable(100);
+
+//内部值发生改变(value/number)改变时,执行内部代码
+autorun(() => {
+    console.log(value.get());
+});
+
+value.set(1);//输出1
+value.set(2);//输出2
+number.set(101);//number并未在autorun中(并未监听),所以状态改变无输出状态
+
+输出
+0
+1
+2
+
+#################################
+const number = observable(100);//100>0 结果为true,plus改变,输出true
+//监控number是否为正数
+const plus = computed(() => number.get() > 0);
+
+autorun(() => {
+    console.log("plus ===> " + plus.get());
+    // console.log("now number ==> " + number.get());
+});
+
+number.set(-19);//-19<0 结果为fales,plus=true改变,输出false
+number.set(-1);//-1<0 结果为fales,plus=false未改变,不输出
+number.set(-1);//-1<0 结果为fales,plus=false未改变,不输出
+number.set(1);//1>0 结果为true,plus=false改变,输出true
+输出
+plus ===> true
+plus ===> false
+plus ===> true
+#################################
+
+
+
+
+
+
+
+

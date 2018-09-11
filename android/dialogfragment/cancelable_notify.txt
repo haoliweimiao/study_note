@@ -1,0 +1,23 @@
+DialogFragment禁止外围取消的方法
+
+
+创建dialogfragment时 该dialogfragment需设置cancelable 未false，否则fragement可用被取消
+   public static NotifyCooperatePayDialog newInstance(StockOrderDetailBean.OrderDetailBean bean) {
+        NotifyCooperatePayDialog dialog = new NotifyCooperatePayDialog();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(data, bean);
+        dialog.setArguments(bundle);
+        dialog.setCancelable(false);
+        return dialog;
+    }
+
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = new Dialog(getActivity(), getTheme());
+        //创建dialogfragment 仅设置这两个属性无效，需在创建DialogFragment时对其进行设置setCancelable->false
+        dialog.setCancelable(isCancelable);//false：dialog弹出后会点击屏幕或物理返回键，dialog不消失
+        dialog.setCanceledOnTouchOutside(isCancelable);//false：dialog弹出后会点击屏幕，dialog不消失；点击物理返回键dialog消失
+        return dialog;
+    }

@@ -1,0 +1,11 @@
+5.1.创建一个React Native项目(RealmDemo)
+
+react-native init <project-name>       //我这边使用RealmDemo代替project-name
+
+5.2.cd <project-name> 切换到项目根目录中,然后添加realm依赖库
+
+npm install --save realm
+
+5.3.现在使用rnpm来把项目和realm原生模块库添加关联
+
+rnpm link realm

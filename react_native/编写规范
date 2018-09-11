@@ -1,0 +1,17 @@
+1.新建与引入模块
+#有以下两种方式（使用第一种）
+var Hello = require('./components/Hello');
+module.exports = React.createClass({
+
+import Hello from './components'
+export default React.createClass({
+
+2.界面单位
+var px_width = Dimensions.get('window').width / 720;
+var px_height = Dimensions.get('window').height / 1280;
+
+
+3.props
+　文本string统一使用　textContent={"需要传输的内容"}　调用　<Text>{this.props.textContent}</Text>
+　图片地址 imagePath={require('图片相对地址')}　　调用 source={this.props.imagePath}
+

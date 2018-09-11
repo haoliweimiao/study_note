@@ -1,0 +1,28 @@
+RecyclerView 刷新问题
+
+1.position => 1,首次item中status为1，刷新后设置的item为2
+，界面显示正确，但debug时adapter得到的status依然为1，依然可以触发点击事件
+
+初始化代码：
+        rcvContent.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rcvContent.setHasFixedSize(true);
+        rcvContent.setNestedScrollingEnabled(false);
+
+        adatper = new PaySellAdatper(this);
+        adatper.setData(new ArrayList<PaySellBean.ListBean>());
+        adatper.setOnSell(this);
+        rcvContent.setAdapter(adatper);
+
+刷新代码：
+ if (isRefresh) {
+            //重新刷新时，清除recyclerview中的数据并且清除视图重新生成，
+	    //仅清空adapter中的数据可能会导致数据未变化（之前视图未刷新残留脏数据）
+            //下列两个方法有效
+//            rcvContent.removeAllViewsInLayout();
+//            rcvContent.swapAdapter(adatper, true);
+            adatper.getData().clear();
+            adatper.notifyDataSetChanged();
+        }
+
+        adatper.getData().addAll(datas);
+        adatper.notifyDataSetChanged();

@@ -1,0 +1,50 @@
+################
+1/
+	新建项目
+
+2/
+	在根目录下 npm init  生成package.json
+3/
+	npm install --save react react-native 安装React Native
+4/
+	curl -o .flowconfig https://raw.githubusercontent.com/facebook/react-native/master/.flowconfig  生成flowconfig 
+5/  
+	package.json修改 添加start
+	  "scripts": {
+   	  "test": "echo \"Error: no test specified\" && exit 1",
+    	  "start": "node node_modules/react-native/local-cli/cli.js start"
+  	},
+
+	app/build.gradle修改
+	dependencies {
+    	...
+	//添加react native库
+    	compile 'com.facebook.react:react-native:+' // From node_modules.
+	}	
+ 	defaultConfig {
+	...
+	//添加防止出现is 32-bit instead of 64-bit动态库错误分析
+        	ndk {
+            		abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        	}
+    	}
+
+	android{
+		// 错误Conflict with dependency 'com.google.code.findbugs:jsr305' 解决方法 
+		configurations.all {
+    			resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+		}
+		}
+6/
+	在app/src/main 新建assets文件夹 生成bundle
+	####注意主JS文件入口名称,与package.json中需要一致####
+	####注意assets路径####路径错误无法写入####
+	react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+	react-native bundle --platform android --dev false --entry-file index.js --bundle-output app/src/main/assets/index.android.bundle --assets-dest app/src/main/res/  
+7/其他文件参考外部文件
+
+########运行方式########
+
+ adb reverse tcp:8081 tcp:8081
+ npm start
+ 点击android studio run

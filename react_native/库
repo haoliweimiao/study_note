@@ -1,0 +1,37 @@
+font icon 字体图标
+
+集成了FontAwesome,iconiicon,[Foundation icons]
+https://github.com/corymsmith/react-native-icons
+或
+https://github.com/oblador/react-native-vector-icons
+
+推荐第二种用起来比较舒服
+
+    ps下：
+    使用外部链接库之后,需要重启npm 
+
+最佳轮播组件
+
+react-native-swiper
+https://github.com/leecade/react-native-swiper
+最佳视差滚动插件
+
+react-native-parallax-view
+https://github.com/lelandrichardson/react-native-parallax-view
+
+blur 毛玻璃组件
+https://github.com/Kureev/react-native-blur
+
+最强轮播组件
+https://github.com/leecade/react-native-swiper
+
+漂亮下拉刷新
+https://github.com/Shuangzuan/RCTRefreshControl
+寻找react组件好地方
+
+http://react.parts/native-ios
+
+作者：sherlock221b
+链接：http://www.jianshu.com/p/c44e81736a83
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

@@ -1,0 +1,1 @@
+加上resizeMode={‘stretch’}属性图片就可以正常加载。

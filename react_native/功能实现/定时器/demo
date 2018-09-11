@@ -1,0 +1,40 @@
+
+####无需import####
+let i = 0;
+setInterval(() => {
+    i++;
+    console.log(i);
+}, 1000);
+
+
+
+
+this.timer = setTimeout(function() {
+      alert('3秒后弹出')
+    }, 3000);
+注意定时器开启就得有清除，一般在componentWillUnMount调用，图形卸载时清楚定时器也好理解
+
+this.timer && clearTimeout(this.timer)
+
+
+
+
+import React,{
+  Component
+} from 'react';
+
+export default class Hello extends Component {
+  componentDidMount() {
+    this.timer = setTimeout(
+      () => { console.log('把一个定时器的引用挂在this上'); },
+      500
+    );
+  }
+  componentWillUnmount() {
+    // 请注意Un"m"ount的m是小写
+
+    // 如果存在this.timer，则使用clearTimeout清空。
+    // 如果你使用多个timer，那么用多个变量，或者用个数组来保存引用，然后逐个clear
+    this.timer && clearTimeout(this.timer);
+  }
+};

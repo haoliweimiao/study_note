@@ -1,0 +1,22 @@
+adb shell am force-stop com.awesomeproject(包名)
+
+npm install after modifying package.json
+
+##react native 错误unable to load script form assets解决 
+1.首先手动在main下建立一个assets文件夹
+
+2.然后cmd 进入项目的根目录下执行  
+红屏问题"Could not get BatchedBridge, make sure your bundle is packaged correctly"
+####注意主JS文件入口名称,与package.json中需要一致####
+####注意assets路径####路径错误无法写入####
+react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+
+
+3.在执行 react-native run-android  
+
+
+1. Clear watchman watches: `watchman watch-del-all`.\n  
+2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.\n  
+3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`
+

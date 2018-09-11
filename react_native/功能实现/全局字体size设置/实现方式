@@ -1,0 +1,1 @@
+使用mobx-react 创建一个store管理字体大小,在需要使用text的js文件引入该store,textSize设置为store中取出的字体值,将引用界面的text组件用@observe注册成 mobx组件(不然无法改变其字体大小)
