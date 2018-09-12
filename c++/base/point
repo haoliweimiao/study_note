@@ -58,3 +58,33 @@ struct man
     std::cin >> pm->age;
     std::cout << "your name: "<<pm->name<<" your age: "<<pm->age;
     delete pm;
+
+
+
+//method
+int sum_arr(int arr[], int n){
+    //arr 传入进入的是 arr的地址 默认指向第一个
+    //若 sum_arr(arr + 4, 4);地址从arr第五位开始;arr + 4等同于&arr[4]
+    int total = 0;
+    std::cout << arr << sizeof arr;
+    // 1=>地址 2=>4 指针变量长度 所以需要外部传入n(实际数组长度)
+    //在方法外打印为整个数组长度
+    for(int i = 0; i < n; i++)
+    total = total = arr[i];
+    return total; 
+}
+
+//
+int sum_arr(const int *start,const int *end){
+    const int * pt;
+    int total = 0;
+    for(pt = start; pt != end; pt++)
+        total = total + *pt;
+    
+    return total;
+}
+
+//
+int sloth = 3;
+const int * ps = &sloth;//ps=>sloth地址 无法通过ps修改sloth的值
+int * const finger = &sloth;//无法修改 finger的指向，但允许修改sloth的值
