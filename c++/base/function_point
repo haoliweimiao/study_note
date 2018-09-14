@@ -1,0 +1,40 @@
+#函数指针
+#类似于Java的interface类，继承类方法不同实现方式
+
+#include "fun_point.hpp"
+#include "iostream"
+
+void function_point(){
+    int code;
+    std::cout << "How many lines of code do you need? ";
+    std::cin >> code;
+    std::cout << "Here's Betsy's estimate:\n";
+    estimate(code, betsy);
+    std::cout << "Here's Pam's estimate:\n";
+    estimate(code, pam);
+}
+
+
+double betsy(int lns){
+    return 0.05 * lns;
+}
+
+double pam(int lns){
+    return 0.03 * lns + 0.004 * lns * lns;
+}
+
+
+void estimate(int lines,double (*pt)(int)){
+    std::cout << lines << " lines will take ";
+    std::cout << (*pt)(lines) << " hour(s)\n";
+}
+
+
+
+#print 
+How many lines of code do you need? 10
+Here's Betsy's estimate:
+10 lines will take 0.5 hour(s)
+Here's Pam's estimate:
+10 lines will take 0.7 hour(s)
+Program ended with exit code: 0
