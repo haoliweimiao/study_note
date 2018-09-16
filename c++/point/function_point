@@ -1,6 +1,17 @@
 #函数指针
 #类似于Java的interface类，继承类方法不同实现方式
 
+
+####################################
+double pam(int);
+double (*pf)(int);
+pf = pam;//pf=>pam地址，即*pf指向pam函数
+
+调用方式
+(*pt)(2333)
+
+####################################
+
 #include "fun_point.hpp"
 #include "iostream"
 
@@ -9,6 +20,7 @@ void function_point(){
     std::cout << "How many lines of code do you need? ";
     std::cin >> code;
     std::cout << "Here's Betsy's estimate:\n";
+    //函数名称为函数地址
     estimate(code, betsy);
     std::cout << "Here's Pam's estimate:\n";
     estimate(code, pam);
@@ -38,3 +50,19 @@ Here's Betsy's estimate:
 Here's Pam's estimate:
 10 lines will take 0.7 hour(s)
 Program ended with exit code: 0
+
+
+####################################
+const double * f1(const double ar[],int n);
+const double * f2(const double [],int);
+const double * f3(const double *,int);
+此三方法相同
+在函数原型中，参数列表const double ar[] 与 const double *ar 含义完全相同；
+在函数原型中，可以省略标识符，因此，const double 
+
+//初始化
+const double * (*p1)(const double *,int);
+const double * (*p1)(const double *,int) = f1;
+//c++11
+auto p2 = f2;
+
