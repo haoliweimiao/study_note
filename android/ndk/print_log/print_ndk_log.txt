@@ -1,0 +1,87 @@
+###############################
+在android studio logcat 中查看 c++ 中 std::cout 的输出
+
+#################################
+添加android_buf.h
+
+#ifndef NDKDEMO_ANDROID_BUF_H
+#define NDKDEMO_ANDROID_BUF_H
+
+#include <iostream>
+#include <streambuf>
+#include <android/log.h>
+
+class AndroidBuf : public std::streambuf {
+    enum {
+        BUFFER_SIZE = 255,
+    };
+
+public:
+    AndroidBuf();
+    ~AndroidBuf();
+
+protected:
+    virtual int_type overflow(int_type c) {
+        if (c != EOF) {
+            *pptr() = c;
+            pbump(1);
+        }
+        flush_buffer();
+        return c;
+    }
+
+    virtual int sync() {
+        flush_buffer();
+        return 0;
+    }
+
+private:
+    int flush_buffer();
+
+private:
+    char buffer_[BUFFER_SIZE + 1];
+};
+
+#endif //NDKDEMO_ANDROID_BUF_H
+
+###############################
+添加android_buf.cpp
+
+#include "android_buf.h"
+
+AndroidBuf::AndroidBuf() {
+    buffer_[BUFFER_SIZE] = '\0';
+    setp(buffer_, buffer_ + BUFFER_SIZE - 1);
+}
+
+AndroidBuf::~AndroidBuf() {
+    sync();
+}
+
+int AndroidBuf::flush_buffer() {
+    int len = int(pptr() - pbase());
+    if (len <= 0)
+        return 0;
+
+    if (len <= BUFFER_SIZE)
+        buffer_[len] = '\0';
+
+#ifdef ANDROID
+    android_LogPriority t = ANDROID_LOG_INFO;
+    __android_log_write(t, "Native", buffer_);
+#else
+    printf("%s", buffer_);
+#endif
+
+    pbump(-len);
+    return len;
+}
+
+########################################
+使用方式（日志打印完毕应该清除所有log输出）
+
+ AndroidBuf g_MyStreamBuf;
+ std::cout.rdbuf(&g_MyStreamBuf);
+
+//使用完释放(多处删除导致异常？？空指针)
+delete std::cout.rdbuf(0);
