@@ -1,0 +1,81 @@
+###########################
+template<class T1,class T2>
+void ft(T1 x,T2 y){
+    
+    ?type? xpy = x + y;
+}
+在c++98中，无法声明xpy的类型
+##########################
+
+c++11 提供关键字decktype
+
+int x;
+decltype(x) y;//make y the same type as x
+给decltype提供的参数可以是表达式，因此在前面的模版函数中，可以使用下面的代码
+decltype(x + y) xpy;//make xpy the same type as x + y
+xpy = x + y;
+另一种方法是，将两条语句合二为一:
+decltype(x + y) xpy = x + y;
+
+因此可以这样修复前面的模板函数ft():
+template<class T1,class T2>
+void ft(){
+    decltype(x + y) xpy = x + y;
+}
+
+#########################
+为确定类型，编译器必须遍历一个核对表。假设有如下声明:
+decltype(expression) var;
+核对表简化版本如下:
+
+1：如果expression是一个没有括号括起的标识符，则var类型与该标识符类型相同，包括const等限定符：
+double x = 5.5;
+double y = 7.9;
+double &rx = x;  
+  
+const double * pd; 
+decltype(x) w;// w is type double;
+decltype(rx) u = y;//u is type double &
+decltype(pd) v;//v is type double *
+
+2:如果expression是一个函数调用，则var值的类型与函数返回的类型相同：
+long indeed(int);
+decltype(indeed(3)) m;//m is type long
+####注意：并不会实际调用函数。编译器通过查看函数的原型获悉返回类型，而无需实际调用函数。
+
+3:如果expression是一个左值，则var为指向其类型的引用。
+double xx = 2.3;
+decltype((xx)) r2 = xx;//r2 is double &
+decltype(xx) w = xx;//w is double(Stage 1 match)
+###括号并不会改变表达式的值和左值性。例如，下面两条语句等效：
+xx = 98.6; (xx) = 98.6;
+
+4:如果前面条件都不满足，则var的类型与expression的类型相同：
+int j = 3;
+int &k = j;
+int &n = j;
+decltype(j + 6) i1;//i1 type int 
+decltype(100L) i2;//i2 type long 
+decltype(k + n) i3;//i3 type int
+###虽然k和n都是引用，但是表达式k + n不是引用；它是两个int的和，因此类型为int。
+
+###############################
+如果需要多次声明，可以结合typedef和decltype:
+
+template<class T1,class T2>
+void ft(T1 x,T2 y){
+    ...
+    typedef decltype(x + y) xytype;
+    xytype xpy = x + y;
+    xytype arr[10];
+    xytype & rxy = arr[2];//rxy a reference
+}
+
+################################
+另一种语法声明(c++11 后置返回类型)
+
+template<class T1,class T2>
+auto gt(T1 x,T2 y) -> decltype(x + y){
+    ...
+    return x + y;
+}
