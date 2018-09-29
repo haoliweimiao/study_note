@@ -1,0 +1,45 @@
+Android 中的 Dalvik Heap 和 Native Heap
+
+Android程序为什么容易出现OOM
+这个是因为 Android系统对 dalvik 的 vm heapsize 作了硬性限制，当 java 进程申请的 java 空间超过阈值时，
+就会抛出OOM异常（这个阈值可以是48 M、24 M、16 M等，视机型而定），可以通过adb shell getprop 或者 
+grep dalvik.vm.heapgrowthlimit 查看此值。
+
+也就是说，程序发生 OMM 并不表示 RAM 不足，而是因为程序申请的 java heap 对象超过了 
+dalvik vm heapgrowthlimit。也就是说，在 RAM 充足的情况下，也可能发生 OOM 。
+
+这样的设计似乎有些不合理，但是 Google 为什么这样做呢？这样设计的目的是为了让 Android 
+系统能同时让比较多的进程常驻内存，这样程序启动时就不用每次都重新加载到内存，能够给用户更快的响应。
+迫使每个应用程序使用较小的内存，移动设备非常有限的RAM就能使比较多的app常驻其中。
+
+################################################
+native进程：采用C/C++实现，不包含dalvik实例的linux进程，/system/bin/目录下面的程序文件运行后都是以native进程形式存在的。
+
+################################################
+java进程：实例化了 dalvik 虚拟机实例的 linux 进程，进程的入口 main 函数为 java 函数。
+dalvik 虚拟机实例的宿主进程是fork()调用创建的linux进程，所以每一个android上的java进程实际上就是一个linux进程，
+只是进程中多了一个dalvik虚拟机实例。因此，java 进程的内存分配比native进程复杂。Android系统中的应用程序基本都是java进程，
+如桌面、电话、联系人、状态栏等等。
+
+
+################################################
+VSS- Virtual Set Size 虚拟耗用内存（包含共享库占用的内存）
+RSS- Resident Set Size 实际使用物理内存（包含共享库占用的内存）
+PSS- Proportional Set Size 实际使用的物理内存（比例分配共享库占用的内存）
+USS- Unique Set Size 进程独自占用的物理内存（不包含共享库占用的内存）
+一般来说内存占用大小有如下规律：VSS >= RSS >= PSS >= USS
+
+
+################################################
+#Android如何应对RAM不足
+java 程序发生 OMM 并不是表示 RAM 不足，如果 RAM 真的不足，会发生什么呢？这时 Android 的memory killer会起作用，
+当 RAM 所剩不多时，memory killer 会杀死一些优先级比较低的进程来释放物理内存，让高优先级程序得到更多的内存。
+
+应用程序如何绕过dalvikvm heapsize的限制
+#创建子进程
+创建一个新的进程，那么我们就可以把一些对象分配到新进程的heap上了，从而达到一个应用程序使用更多的内存的目的，
+当然，创建子进程会增加系统开销，而且并不是所有应用程序都适合这样做，视需求而定。
+
+#使用jni在native heap上申请空间
+native heap的增长并不受dalvik vm heapsize的限制，只要RAM有剩余空间，程序员可以一直在native heap上申请空间，
+当然如果 RAM快耗尽，memory killer会杀进程释放RAM。大家使用一些软件时，有时候会闪退，就可能是软件在native层申请了比较多的内存导致的。
