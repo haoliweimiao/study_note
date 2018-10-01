@@ -1,0 +1,20 @@
+initialzation
+
+
+####################################
+class Bakery{
+    private:
+        enmu {Months = 12};
+        double conts[Months];
+}
+##该方式声明枚举不会创建类的数据成员。也就是说所有对象都不包含枚举。另外，Months只是一个符号名称，
+在作用域为整个类的代码遇到它时，编译器用12来替代它。
+
+####################################
+class Bakery{
+    private:
+        static const int Months = 12;
+        double conts[Months];
+}
+##这将创建一个名为Months的常量，该常量与其他静态变量存储在一起，而不是存储在对象中。
+因此，只有一个Months常量，被所有Bakery对象共享。

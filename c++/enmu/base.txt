@@ -1,0 +1,10 @@
+###############################
+
+enmu egg{Small,Medium,Large,Jumbo};
+enmu t_shirt{Small,Medium,Large,Xlarge};
+上述代码编译无法通过，因为egg Small 和 t_shirt Small位于相同的作用域中，它们将发生冲突。
+为了避免这种问题，c++11提供了一种新的枚举，其枚举量的作用域为类。声明方式如下：
+enmu class egg{Small,Medium,Large,Jumbo};
+enmu class t_shirt{Small,Medium,Large,Xlarge};
+###也可以使用struct代替class。
+
