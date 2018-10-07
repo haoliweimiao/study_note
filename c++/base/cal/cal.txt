@@ -1,0 +1,39 @@
+#######################
+class operator
+
+
+#######################
+xx.hpp
+
+class Time{
+private:
+    int hours;
+    int minutes;
+public:
+    Time();
+    Time(int h,int m=0);
+    void addMin(int m);
+    void addHr(int h);
+    void reset(int h,int m);
+//    Time sum(const Time & t) const;
+    Time operator+(const Time & t) const;
+    void show() const;
+};
+
+#######################
+xx.cpp
+
+Time Time::operator+(const Time& t) const {
+  Time sum;
+  sum.minutes = minutes + t.minutes;
+  sum.hours = hours + t.hours + sum.minutes / 60;
+  sum.minutes %= 60;
+  return sum;
+}
+
+
+#######################
+using method
+total = coding + fixing;//all of Time class
+or
+total = morefixing.operator+(total);
