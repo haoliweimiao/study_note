@@ -1,0 +1,17 @@
+#####################################
+list排序
+
+Collections.sort(intList,new Comparator<Integer>() {
+
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                // 返回值为int类型，大于0表示正序，小于0表示逆序
+                return o2-o1;
+            }
+        });
+
+
+#####################################
+list拷贝
+ List<XXXBean> datas
+  = new ArrayList<>(oldDatas);

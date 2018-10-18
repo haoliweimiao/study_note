@@ -1,0 +1,31 @@
+Android TextView 动态设置DrawableLeft
+
+####################################
+
+Android TextView 在xml中在添加一个文字的左右图片很方便。
+android:drawableLeft="@mipmap/icon_orange_sign"
+
+####################################
+
+实际应用当中需要动态设置的时候：TextView 提供了两种方法：
+
+setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom)，及 
+setCompoundDrawables(left, top, right, bottom)它们的意思是设置Drawable显示在text的左、上、右、下位置。 
+但是两者有些区别： 
+setCompoundDrawables 画的drawable的宽高是按drawable.setBound()设置的宽高， 
+所以才有The Drawables must already have had setBounds(Rect) called，
+即使用之前必须使用Drawable.setBounds设置Drawable的长宽。
+
+而setCompoundDrawablesWithIntrinsicBounds是画的drawable的宽高是按drawable固定的宽高， 
+所以才有The Drawables’ bounds will be set to their intrinsic bounds.
+即通过getIntrinsicWidth()与getIntrinsicHeight()获得。 
+一般，建议使用setCompoundDrawablesWithIntrinsicBounds，这样你即无需设置Drawables的bounds了。
+
+TextView textDrawable = (TextView) findViewById(R.id.text_drawable);
+
+Drawable drawableLeft = getResources().getDrawable( 
+R.drawable.ic_launcher);
+
+textDrawable.setCompoundDrawablesWithIntrinsicBounds(drawableLeft, 
+null, null, null); 
+textDrawable.setCompoundDrawablePadding(4);

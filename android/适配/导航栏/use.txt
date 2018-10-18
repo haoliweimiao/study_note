@@ -1,0 +1,4 @@
+#########################################
+添加
+StatusHelper.statusBarLightMode(activity);
+在onViewCreated生命周期内

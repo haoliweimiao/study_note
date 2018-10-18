@@ -1,5 +1,5 @@
 DialogFragment禁止外围取消的方法
-
+ 
 
 创建dialogfragment时 该dialogfragment需设置cancelable 未false，否则fragement可用被取消
    public static NotifyCooperatePayDialog newInstance(StockOrderDetailBean.OrderDetailBean bean) {

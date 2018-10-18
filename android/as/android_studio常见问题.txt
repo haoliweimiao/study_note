@@ -1,0 +1,8 @@
+###################################
+Android Studio Java代码报红
+（所有第三方库引入失败），但可正常运行解决方法（4种方式）
+
+一.从Android Studio层面解决问题: 删除user目录下.AndroidStudio中的文件
+二. 从Project 项目层面解决问题: 清除项目缓存
+三. 从Gradle层面解决问题: 清除user目录下.gradle文件,重新下载Gradle
+删除工程目录下.gradle、.idea
