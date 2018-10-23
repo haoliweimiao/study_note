@@ -26,3 +26,7 @@ RecyclerView 刷新问题
 
         adatper.getData().addAll(datas);
         adatper.notifyDataSetChanged();
+
+################################################
+依据item bean某个标志刷新时，标志数据更改不应该在adapter onBindViewHolder中
+（逻辑出错/复用等因素会导致标志设置异常）

@@ -26,6 +26,5 @@ TextView textDrawable = (TextView) findViewById(R.id.text_drawable);
 Drawable drawableLeft = getResources().getDrawable( 
 R.drawable.ic_launcher);
 
-textDrawable.setCompoundDrawablesWithIntrinsicBounds(drawableLeft, 
-null, null, null); 
+textDrawable.setCompoundDrawablesWithIntrinsicBounds(drawableLeft, null, null, null); 
 textDrawable.setCompoundDrawablePadding(4);
