@@ -1,0 +1,31 @@
+############################################
+***
+用给定的c字符串创建java字符串
+jstring javaString;
+javaString =  (*env)->NewStringUTF(env,"String");
+
+***
+将java字符串转换成c字符串
+ const jbyte* str;
+ jboolean isCopy;
+
+ str = (*evn)->GetStringUTFChars(env,javaString,&isCopy);
+ if(0 != str){
+     printf("java string %s",str);
+
+     if(KNI_TRUE == isCopy){
+         printf("C string is a copy of the Java string.");
+     }else{
+         printf("C string points to actual string.");
+     }
+ }
+
+ ***
+ 释放字符串
+ 通过jni GetStringUTFChars函数和GetStringChars函数获得的C字符串在原生代码使用完之后要正确的释放，
+ 否则将会引起内存泄漏。
+
+ 释放jni函数返回的c字符串
+ (*env)->ReleaseStringUTFChars(env,javaString,str);
+
+ ############################################

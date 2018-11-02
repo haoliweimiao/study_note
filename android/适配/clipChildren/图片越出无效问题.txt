@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:gravity="center_horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="11dp">
+
+        <TextView
+            android:id="@+id/tv_stock_pay_price"
+            android:layout_width="107dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_stock_pay_normal"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/img_right_upper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_right_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>
+
+######################################
+img_right_upper  图片无法越出父布局
+其实问题的关键就是，RecyclerView的父布局指定了高度，而item也指定了高度，
+而父布局的高度不足以包住item。在这种情况下，即使设置了clipchidren也无效。
+所以只要将父布局的高度增大到足够包裹下放大后的item即可。
+
+img_right_out 可以

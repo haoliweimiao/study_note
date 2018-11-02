@@ -1,0 +1,53 @@
+############################################
+访问域
+############################################
+
+java有两类域：实例域和静态域。类的每个实例都有自己的实例域副本，而一个类的所有实例共享同一个静态域。
+
+***
+带有静态域和实例域的Java类
+
+public class JavaClass{
+    /**
+     * 实例域
+     */
+     private String instanceField = "Instance Field";
+
+     /**
+     * 静态域
+     */
+     private static String staticField = "Static Field";
+
+}
+
+1.获取域id
+jni提供了作用域id访问两类域的方法，可以通过给实例的class对象获取域id，用GetObjectClass函数可以获取
+class对象。
+
+用对象引用获取类
+jclass clazz;
+clazz = (*env)->GetObjectClass(env,instance);
+
+获取实例域的域id
+jfieldID instanceFieldId;
+instanceFieldId = (*env)->GetFieldID(env,clazz,"instanceField","Ljava/lang/String");
+
+获取静态域的域id
+
+jfieldID staticFieldId;
+staticFieldId = (*env)->GetStaticFieldID(env,clazz,"staticField","Ljava/lang/String");
+
+2.获取域
+在获得域id后，可以用Get<Type>Field函数获得实际的实例域。
+
+获得实例域
+jstring instanceField;
+instanceField = (*env)->GetObjectField(env,instance,instanceFieldId);
+
+获得静态域
+jstring staticField;
+staticField = (*env)->GetStaticObjectField(env,class,staticFieldId);
+
+在内存溢出的情况下，这些函数均返回NULL,此时原生代码不会继续执行。
+获得单个域值需要调用2到3个jni函数，原生代码回到Java中获取每个单独的域值，这给应用程序增加了额外的负担，
+进而导致性能下降。强烈建议将所需的参数传递个原生方法调用，而不是让原生代码回到Java中。

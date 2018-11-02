@@ -19,3 +19,7 @@ Error: java.util.concurrent.ExecutionException: com.android.builder.internal.aap
 AAPT2 error: check logs for details
 
 1.检查.9图片黑线是否正常添加
+
+###################################
+AAPT2 error: check logs for details
+设置install run 勾全部去除

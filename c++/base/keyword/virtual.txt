@@ -94,3 +94,86 @@ PS:一定要注意“静态联翩 ”和“ 动态联编 ”的区别；对于�
 因为虽然实际上这个指针指向的是Child类的对象，但编译器无法知道这一事实，它只能按照调用Parent类的函数来理解并编译，所以我们看到了第一行的结果。
 第二行中调用了子类的function2，完全是因为virtual 的功能，virtual实现了动态联编，它可以在运行时判断指针指向的对象，并自动调用相应的函数。
 1 p=&parent;  //这一句，该指针很明显的是指向父类，那么肯定调用的是父类的方法
+
+####################################################
+使用虚函数，在内存和执行速度方面有一定的成本：
+1.每个对象都将增大，增大量为存储地址的空间。
+2.对于每个类，编译器都将创建一个虚函数地址表（数组）。
+3.对于每个函数调用，都需要执行一项额外的操作，即到表中查找地址。
+
+
+####################################################
+有关虚函数注意事项
+1.在基类方法的声明使用关键字virtual可使该方法在基类以及所有的派生类
+ （包括从派生类派生出来的类）中是虚的。
+2.如果使用指向对象的引用或者指针来调用虚方法，程序将使用为对象类型定义的方法，
+  而不使用为引用或者指针类型定义的方法。这称为动态联编或晚期联编。这种行为非常重要，
+  因为这样基类指针或引用可以指向派生类。
+3.如果定义的类将被用作基类，则应将那些要在派生类中重新定义的类方法声明为虚的；
+
+***构造函数
+构造函数不能是虚函数。创建派生类对象时，将调用派生类的构造函数，而不是基类的构造函数，
+然后，派生类的构造函数将使用基类的一个构造函数，这种顺序不同于继承机制。因此，
+派生类不继承基类的构造函数，所以讲类构造函数声明为虚的没有意义。
+***析构函数
+析构函数应当是虚函数，除非类不用做基类。例如，假设Employee是基类，Singer是派生类，
+并添加一个char*成员，该成员指向由new分配的内存。当Singer对象过期时，
+必须调用～Singer()析构函数来释放内存；
+Employee * pe = new Singer;//legal because Employee is base for Singer
+delete pe;//~Employee() or ~Singer()?
+**及时基类不需要显示析构函数提供服务，也不应该依赖于默认构造函数，而应该提供
+  需析构函数，及时它不执行任何操作。 virtual ~BaseClass(){}
+***友元
+友元不能是虚函数，因为友元不是类成员，而只有成员才能是虚函数。如果由于这个原因引起
+设计问题，可以通过让友元函数使用虚成员来解决。
+***没有重新定义
+如果派生类没有重新定义函数，将使用该函数的基类版本。如果派生类位于派生链中，
+则将使用最新的虚函数版本，例外的情况是基类版本是隐藏的。
+***重新定义将隐藏方法
+class Dwelling{
+    public:
+        virtual void showperks(int a) const;
+};
+
+class Hovel:public Dwelling{
+    public:
+        virtual void showperks() const;
+};
+
+这将导致问题，可能会出现类似于下面这样的编译器警告：
+Warning:Hovel::showperks(void) hides Dwelling::showperks(int)
+1.如果重新定义继承的方法，应确保与原来的原型完全相同，如果返回类型是基类引用或指针，
+则可以修改为指向派生类的引用或者指针（这种例外是新出现的）。这种特性被称为返回类型协变
+（covariance of return type),因为允许返回类型随类类型的变化而变化：
+**这种例外只适用于返回值，而不适用与参数。
+class Dwelling{
+    public:
+        //a base method
+        virtual Dwelling & build(int n);
+};
+
+class Hovel::public Dwelling{
+    public:
+    //a derived method with a covariant rerurn type
+        virtual Hovel & build(int n);//same function signature
+};
+
+2.如果基类声明被重载了，则应在派生类中重新定义所有的基类版本。
+**如果只重新定义一个版本则另外两个版本将被隐藏，派生类对象将无法使用他们。
+注意，如果不需要修改，则新定义可只调用基类版本：
+void Hovel::showperks() const{Dwelling::showperks();}
+class Dwelling{
+    public:
+        //three overloaded showperks()
+        virtual Dwelling showperks(int a) const;
+        virtual Dwelling showperks(double x) const;
+        virtual Dwelling showperks() const;
+};
+
+class Hovel::public Dwelling{
+    public:
+   //three overloaded showperks()
+        virtual Dwelling showperks(int a) const;
+        virtual Dwelling showperks(double x) const;
+        virtual Dwelling showperks() const;
+};
