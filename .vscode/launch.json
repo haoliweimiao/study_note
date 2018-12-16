@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MaoPaoSort",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "sort.MaoPaoSort",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ThreadLocalDemo",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "ThreadLocalDemo",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Final",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "Final",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ProducerConsumerInJava",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.test.ProducerConsumerInJava",
+            "args": ""
+        }
+    ]
+}

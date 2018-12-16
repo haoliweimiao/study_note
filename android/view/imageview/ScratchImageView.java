@@ -16,16 +16,16 @@ public class ScratchImageView extends View {
     private int viewWidth;
     private int viewHeight;
  
-    public ScratchImageView2(Context context) {
+    public ScratchImageView(Context context) {
         super(context);
     }
  
-    public ScratchImageView2(Context context, AttributeSet attrs) {
+    public ScratchImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
  
-    public ScratchImageView2(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ScratchImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
  

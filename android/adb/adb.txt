@@ -14,3 +14,11 @@ adb shell settings put global policy_control immersive.navigation=apps,-
 
 com.sonyericsson.android.camera,-com.android.settings
 说明：以上为忽略进入相机和设置时隐藏，可通过修改程序包名自定义除外名单
+
+根据包名卸载app
+adb uninstall com.paewo.dc
+#com.paewo.dc 为应用的包名
+
+打印正在运行的activity
+adb shell dumpsys activity activities
+

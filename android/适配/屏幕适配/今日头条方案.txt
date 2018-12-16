@@ -1,0 +1,33 @@
+今日头条屏幕适配方案的核心原理在于，根据以下公式算出 density
+当前设备屏幕总宽度（单位为像素）/  设计图总宽度（单位为 dp) = density
+density 的意思就是 1 dp 占当前设备多少像素
+为什么要算出 density，这和屏幕适配有什么关系呢？
+
+public static float applyDimension(int unit, float value,
+                                       DisplayMetrics metrics)
+    {
+        switch (unit) {
+        case COMPLEX_UNIT_PX:
+            return value;
+        case COMPLEX_UNIT_DIP:
+            return value * metrics.density;
+        case COMPLEX_UNIT_SP:
+            return value * metrics.scaledDensity;
+        case COMPLEX_UNIT_PT:
+            return value * metrics.xdpi * (1.0f/72);
+        case COMPLEX_UNIT_IN:
+            return value * metrics.xdpi;
+        case COMPLEX_UNIT_MM:
+            return value * metrics.xdpi * (1.0f/25.4f);
+        }
+        return 0;
+    }
+
+
+大家都知道，不管你在布局文件中填写的是什么单位，最后都会被转化为 px，系统就是通过上面的方法，将你在项目中任何地方填写的单位都转换为 px 的
+所以我们常用的 px 转 dp 的公式 dp = px / density，就是根据上面的方法得来的，density 在公式的运算中扮演着至关重要的一步
+
+density 在每个设备上都是固定的，DPI / 160 = density，屏幕的总 px 宽度 / density = 屏幕的总 dp 宽度
+设备 1，屏幕宽度为 1080px，480DPI，屏幕总 dp 宽度为 1080 / (480 / 160) = 360dp
+设备 2，屏幕宽度为 1440，560DPI，屏幕总 dp 宽度为 1440 / (560 / 160) = 411dp
+

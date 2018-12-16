@@ -21,14 +21,3 @@ DialogFragment禁止外围取消的方法
         dialog.setCanceledOnTouchOutside(isCancelable);//false：dialog弹出后会点击屏幕，dialog不消失；点击物理返回键dialog消失
         return dialog;
     }
-
-
-##########################################
-    @Override
-    public void dismiss() {
-        //重写dismiss,防止出现以下异常
-        //java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState
-        super.dismissAllowingStateLoss();
-    }
-
-##########################################

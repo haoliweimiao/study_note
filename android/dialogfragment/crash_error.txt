@@ -1,0 +1,9 @@
+##########################################
+    @Override
+    public void dismiss() {
+        //重写dismiss,防止出现以下异常
+        //java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState
+        super.dismissAllowingStateLoss();
+    }
+
+##########################################
