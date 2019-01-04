@@ -1,0 +1,13 @@
+##########################################
+android .string.xml使用String.format出现的问题
+
+1 使用%%或\%（已经失效）
+<string name="template_user_agent">"%%s/%%s (Linux; Android)"</string>
+
+2 添加 formatted="false" 属性(已经失效)
+<string name="template_user_agent" formatted="false">"%s/%s (Linux; Android)"</string>
+
+可用方法
+<string name="template_user_agent" formatted="false">"%1$s/%2$s (Linux; Android)"</string>
+
+##########################################

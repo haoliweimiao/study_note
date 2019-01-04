@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - FileListFunctionTest",
+            "request": "launch",
+            "mainClass": "FileListFunctionTest"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - MaoPaoSort",
             "request": "launch",
             "cwd": "${workspaceFolder}",

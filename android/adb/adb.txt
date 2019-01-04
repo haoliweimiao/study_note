@@ -22,3 +22,22 @@ adb uninstall com.paewo.dc
 打印正在运行的activity
 adb shell dumpsys activity activities
 
+选择设备
+adb -s SH0A6PL00243 shell
+
+adb push命令 ：从电脑上传送文件到手机；
+
+adb pull命令 ：从手机传送文件到电脑上；
+adb -s 192.168.212.199:5555 pull ./mnt/internal_sd/ws_log /Users/hlw/test_log
+
+
+1、adb shell     进入Android系统命令行
+2、am start -n ｛包(package)名｝/｛包名｝.{活动(activity)名称}
+am start -n com.example.hlw.websocketdemo/com.example.hlw.websocketdemo.MainActivity  
+启动APK，在终端直接输入：
+#adb shell am start -n 包名 /. 类名
+比如要打开camera，就输入 adb shell am start -n com.android.camera/.Camera 即可。
+关闭APK，在终端直接输入：
+adb shell am force-stop 包名
+比如要关闭camera，就输入 adb shell am force-stop com.android.camera 即可。
+
