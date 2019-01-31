@@ -1,0 +1,8 @@
+##########################################
+Android通过代码设置EditText不可编辑
+mEditText.setEnabled(false);
+mEditText.setFocusable(false);
+mEditText.setKeyListener(null);//重点
+不设置addTextChangedListener，或设置为null
+
+##########################################

@@ -41,3 +41,6 @@ am start -n com.example.hlw.websocketdemo/com.example.hlw.websocketdemo.MainActi
 adb shell am force-stop 包名
 比如要关闭camera，就输入 adb shell am force-stop com.android.camera 即可。
 
+adb push /Users/hlw/Downloads/ZKDB.db /data/data/com.zkteco.android.core/databases
+
+adb pull /data/data/com.zkteco.android.core/databases/ZKDB_not_init.db /Users/hlw/Downloads/

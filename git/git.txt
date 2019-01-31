@@ -17,3 +17,16 @@ git branch -d xxxxx
 
 6 查看本地和远程分支  
 -a。前面带*号的代表你当前工作目录所处的分支
+
+7.提交pr
+git push origin 本地仓库:名称
+
+git submodule update --init
+
+8.移除本地commit
+git reset HEAD~  
+
+9.存储修改
+git stash
+git stash list 查看列表
+git stash clear 清空
