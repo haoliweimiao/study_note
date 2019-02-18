@@ -11,7 +11,3 @@ Collections.sort(intList,new Comparator<Integer>() {
         });
 
 
-#####################################
-list拷贝
- List<XXXBean> datas
-  = new ArrayList<>(oldDatas);

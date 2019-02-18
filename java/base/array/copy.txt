@@ -1,0 +1,4 @@
+#####################################
+list拷贝
+ List<XXXBean> datas
+  = new ArrayList<>(oldDatas);

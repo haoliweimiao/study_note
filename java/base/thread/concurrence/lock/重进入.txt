@@ -30,4 +30,3 @@ synchronized类型方法，并调用父类中的方法。如果没有可重入�
 synchronized类型的，都会在处理前试图获取Widget的锁。倘若内部锁不可重新入,
 super.doSomething的调用永远无法得到Widget的锁，因为锁已经被占有，导致线程
 会被永久的延迟，等待一个永远无法获得的锁。
-
