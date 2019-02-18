@@ -1,0 +1,8 @@
+###################################
+@androidx.annotation.Nullable 无法找到
+
+gradle.properties
+加入
+android.useAndroidX=true
+android.enableJetifier=true
+###################################
