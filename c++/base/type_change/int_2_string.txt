@@ -1,0 +1,47 @@
+#####################################
+int to string
+#####################################
+
+
+#######
+***注意：itoa并不是一个标准的C函数，它是Windows特有的，如果要写跨平台的程序，请用sprintf。
+//char *itoa( int value, char *string,int radix);
+// 原型说明：
+// value：欲转换的数据。
+// string：目标字符串的地址。
+// radix：转换后的进制数，可以是10进制、16进制等。
+// 返回指向string这个字符串的指针
+
+ int aa = 30;
+ char c[8];
+ itoa(aa,c,16);
+ cout<<c<<endl; // 1e
+
+#######
+ // int sprintf( char *buffer, const char *format, [ argument] … );
+ //参数列表
+ // buffer：char型指针，指向将要写入的字符串的缓冲区。
+ // format：格式化字符串。
+ // [argument]...：可选参数，可以是任何类型的数据。
+ // 返回值：字符串长度（strlen）
+
+ int aa = 30;
+ char c[8]; 
+ int length = sprintf(c, "%05X", aa); 
+ cout<<c<<endl; // 0001E
+
+#######只能转化为10进制的字符串，不能转化为其它进制的字符串。
+ int aa = 30;
+ stringstream ss;
+ ss<<aa; 
+ string s1 = ss.str();
+ cout<<s1<<endl; // 30
+
+ string s2;
+ ss>>s2;
+ cout<<s2<<endl; // 30
+
+#######只能转化为10进制的字符串，不能转化为其它进制的字符串。
+ int aa = 30;
+ string s = boost::lexical_cast<string>(aa);
+ cout<<s<<endl; // 30

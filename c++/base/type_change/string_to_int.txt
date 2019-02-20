@@ -1,0 +1,47 @@
+#####################################
+string to int
+#####################################
+
+
+
+###使用strtol（string to long） 
+string s = "17";
+ char* end;
+ int i = static_cast<int>(strtol(s.c_str(),&end,16));
+ cout<<i<<endl; // 23
+
+ i = static_cast<int>(strtol(s.c_str(),&end,10));
+ cout<<i<<endl; // 17
+
+
+
+###使用sscanf
+ int i;
+ sscanf("17","%D",&i);
+ cout<<i<<endl; // 17
+
+ sscanf("17","%X",&i);
+ cout<<i<<endl; // 23
+
+ sscanf("0X17","%X",&i);
+ cout<<i<<endl; // 23
+
+
+
+###使用stringstream
+###注：stringstream可以吞下任何类型，根据实际需要吐出不同的类型。
+ string s = "17";
+
+ stringstream ss;
+ ss<<s;
+
+ int i;
+ ss>>i;
+ cout<<i<<endl; // 17
+
+
+
+###使用boost库中的lexical_cast
+  string s = "17";
+  int i = boost::lexical_cast<int>(s);
+  cout<<i<<endl; // 17

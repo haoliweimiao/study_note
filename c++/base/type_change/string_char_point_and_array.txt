@@ -1,0 +1,10 @@
+#####################################
+string、char *、char[]的转换
+#####################################
+
+
+
+###
+一、string转char*。
+string str = "hello";
+const char* p = str.data();//加const  或者用char * p=(char*)str.data();的形式

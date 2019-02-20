@@ -1,0 +1,77 @@
+######################################################
+package com.test.demo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BaseTypeChangeDemo {
+    public static void main(String[] args) {
+        int t = 233;
+        testInt(t);
+        System.out.println(t);
+
+        List<Integer> list = new ArrayList<>();
+        list.add(233);
+        printList(list);
+        testList(list);
+        printList(list);
+
+        TestClass testClass=new TestClass();
+        testClass.setTestStr("test1");
+        System.out.println(testClass.toString());
+        testClass(testClass);
+        System.out.println(testClass.toString());
+    }
+
+    private static void testInt(int t) {
+        t = t + 233;
+    }
+
+    private static void testList(List<Integer> list) {
+        list.add(666);
+    }
+
+    private static void printList(List<?> list) {
+        for (Object o :
+                list) {
+            System.out.println(o.toString());
+        }
+    }
+
+    private static void testClass(TestClass t){
+        t.setTestStr("change by method");
+    }
+
+    private static class TestClass{
+        private String testStr;
+
+        public String getTestStr() {
+            return testStr;
+        }
+
+        public void setTestStr(String testStr) {
+            this.testStr = testStr;
+        }
+
+        @Override
+        public String toString() {
+            return "TestClass{" +
+                    "testStr='" + testStr + '\'' +
+                    '}';
+        }
+    }
+}
+######################################################
+打印数据
+233
+233
+233
+666
+TestClass{testStr='test1'}
+TestClass{testStr='change by method'}
+
+######################################################
+8种基础类型传入到方法中不是引用
+byte short int long float double boolean char
+
+其它类型是引用，可以更改数据
