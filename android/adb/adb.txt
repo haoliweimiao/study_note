@@ -34,6 +34,7 @@ adb -s 192.168.212.199:5555 pull ./mnt/internal_sd/ws_log /Users/hlw/test_log
 1、adb shell     进入Android系统命令行
 2、am start -n ｛包(package)名｝/｛包名｝.{活动(activity)名称}
 am start -n com.example.hlw.websocketdemo/com.example.hlw.websocketdemo.MainActivity  
+adb shell am start -n com.zkteco.android.wieganddemo/com.zkteco.android.wieganddemo.activity.MainActivity
 启动APK，在终端直接输入：
 #adb shell am start -n 包名 /. 类名
 比如要打开camera，就输入 adb shell am start -n com.android.camera/.Camera 即可。

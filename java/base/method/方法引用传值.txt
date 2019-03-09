@@ -75,3 +75,4 @@ TestClass{testStr='change by method'}
 byte short int long float double boolean char
 
 其它类型是引用，可以更改数据
+例如*Bean byte[] 等

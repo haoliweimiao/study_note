@@ -1,0 +1,9 @@
+解决SVN 无法上传.SO文件
+/Users/yourname/.subversion 
+vim config
+# global-ignores = *.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a *.pyc *.pyo
+#   *.rej *~ #*# .#* .*.swp .DS_Store
+
+global-ignores = .*.swp .DS_Store
+
+保存/重启svn
