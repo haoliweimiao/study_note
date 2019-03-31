@@ -1,0 +1,33 @@
+####################################################
+synchronized
+####################################################
+
+一个synchorized块有两个部分：
+锁对象的引用
+这个锁保护的代码块
+
+####################################################
+
+/**
+ * 将service方法声明为synchronized,所以同一时间只有一个线程可以进入service方法
+ * 现在SynchronizedFactorizer是线程安全的，但是方法过于极端，它禁止多个用户同时使用service，
+ * 这将导致糟糕的响应性（性能不行）
+ */
+@ThreadSafe
+public class SynchronizedFactorizer implements Servlet {
+    private final AtomicReference<BigInteger> lastNumber = new AtomicReference<>();
+    private final AtomicReference<BigInteger[]> lastFactors = new AtomicReference<>();
+
+    public synchronized void service(ServletRequest req, ServletResponse resp) {
+        BigInteger i = extractFromRequest(req);
+
+        if(i.equals(lastNumber.get())){
+            encodeIntoResponse(resp, lastFactors.get());
+        }else{
+            BigInteger[] factors = factor(i);
+            lastNumber.set(i);
+            lastFactors.set(factors);
+            encodeIntoResponse(resp, factors);
+        }
+    }
+}

@@ -1,9 +1,9 @@
 拓展
-全局隐藏虚拟按键
+*全局隐藏虚拟按键
 adb shell settings put global policy_control immersive.navigation=*
 
 
-全局还原
+*全局还原
 adb shell settings put global policy_control null
 
 
@@ -15,14 +15,14 @@ adb shell settings put global policy_control immersive.navigation=apps,-
 com.sonyericsson.android.camera,-com.android.settings
 说明：以上为忽略进入相机和设置时隐藏，可通过修改程序包名自定义除外名单
 
-根据包名卸载app
+*根据包名卸载app
 adb uninstall com.paewo.dc
 #com.paewo.dc 为应用的包名
 
-打印正在运行的activity
+*打印正在运行的activity
 adb shell dumpsys activity activities
 
-选择设备
+*选择设备
 adb -s SH0A6PL00243 shell
 
 adb push命令 ：从电脑上传送文件到手机；
@@ -35,6 +35,8 @@ adb -s 192.168.212.199:5555 pull ./mnt/internal_sd/ws_log /Users/hlw/test_log
 2、am start -n ｛包(package)名｝/｛包名｝.{活动(activity)名称}
 am start -n com.example.hlw.websocketdemo/com.example.hlw.websocketdemo.MainActivity  
 adb shell am start -n com.zkteco.android.wieganddemo/com.zkteco.android.wieganddemo.activity.MainActivity
+adb shell am start -n com.zkteco.android.checkagedemo/com.zkteco.android.checkagedemo.MainActivity
+
 启动APK，在终端直接输入：
 #adb shell am start -n 包名 /. 类名
 比如要打开camera，就输入 adb shell am start -n com.android.camera/.Camera 即可。
@@ -45,3 +47,7 @@ adb shell am force-stop 包名
 adb push /Users/hlw/Downloads/ZKDB.db /data/data/com.zkteco.android.core/databases
 
 adb pull /data/data/com.zkteco.android.core/databases/ZKDB_not_init.db /Users/hlw/Downloads/
+
+
+*打印屏幕屏幕分辨率
+adb shell dumpsys window displays
