@@ -51,3 +51,9 @@ adb pull /data/data/com.zkteco.android.core/databases/ZKDB_not_init.db /Users/hl
 
 *打印屏幕屏幕分辨率
 adb shell dumpsys window displays
+
+adb shell pm path <PACKAGE>
+输出安装包的APK路径
+
+adb shell pm clear <PACKAGE>
+删除与包相关的所有数据：清除数据和缓存
