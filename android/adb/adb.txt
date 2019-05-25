@@ -2,15 +2,12 @@
 *全局隐藏虚拟按键
 adb shell settings put global policy_control immersive.navigation=*
 
-
 *全局还原
 adb shell settings put global policy_control null
-
 
 ※Sony必看 全局隐藏时进入相机“有去无回”（但可以随便拍一张照片从相册返回）
 隐藏除外指令
 adb shell settings put global policy_control immersive.navigation=apps,-
-
 
 com.sonyericsson.android.camera,-com.android.settings
 说明：以上为忽略进入相机和设置时隐藏，可通过修改程序包名自定义除外名单
@@ -57,3 +54,7 @@ adb shell pm path <PACKAGE>
 
 adb shell pm clear <PACKAGE>
 删除与包相关的所有数据：清除数据和缓存
+
+*adb重启
+adb kill-server
+adb start-server

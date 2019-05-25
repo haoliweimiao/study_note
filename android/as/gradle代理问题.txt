@@ -1,0 +1,2 @@
+~/.gradle/gradle.properties
+文件内将代理删除

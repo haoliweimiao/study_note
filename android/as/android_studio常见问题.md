@@ -33,3 +33,7 @@ title: android studio 常见异常
     setting->Appearance&Behavior->System Settings->Android SDK->SKD Tool->NDK
 
     解决方法：配置ndk-16 之前的ndk-17版本缺少东西，有问题
+
+### It is currently in use by another Gradle instance
+
+    find ~/.gradle -type f -name "*.lock" | while read f; do rm $f; done
