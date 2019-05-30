@@ -19,7 +19,7 @@ title:装饰模式 Decorator
 ## 示例
 ~~~ java
 Stream.java
-public class Stream{
+public interface Stream{
     char read(int number);
     void seek(int position);
     void write(char data);
