@@ -8,7 +8,14 @@
 
 
 ## 自动补全速度慢的问题
-+ c_cpp_properties.json 设置导致
-+ ***之前使用gcc，更换为clang后速度变快***
-+ "intelliSenseMode": "clang-x64",
-  "compilerPath": "/usr/local/Cellar/llvm/8.0.0_1/bin/clang++",
+1. c_cpp_properties.json 设置导致
+    + ***之前使用gcc，更换为clang后速度变快***
+    + "intelliSenseMode": "clang-x64",
+    "compilerPath": "/usr/local/Cellar/llvm/8.0.0_1/bin/clang++",
+2. setting.json 设置
+    +   "search.quickOpen.includeSymbols": true,
+        "editor.minimap.enabled": true,
+        "[cpp]": {"editor.quickSuggestions": true},
+        "[c]": {"editor.quickSuggestions": true},
+        "C_Cpp.intelliSenseEngine": "Tag Parser"
+
