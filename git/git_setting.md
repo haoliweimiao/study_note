@@ -26,3 +26,8 @@ $ git config --global  --list
 ~~~ shell
 $ git config --local  --list
 ~~~
+
+## 删除当前用户（global）配置
+~~~ shell
+$ git config --global --unset http.proxy
+~~~
