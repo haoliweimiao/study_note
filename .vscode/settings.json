@@ -13,5 +13,6 @@
         "signal.h": "c",
         "poll.h": "c"
     },
-    "java.dependency.packagePresentation": "flat"
+    "java.dependency.packagePresentation": "flat",
+    "C_Cpp.default.configurationProvider": "go2sh.cmake-integration"
 }
