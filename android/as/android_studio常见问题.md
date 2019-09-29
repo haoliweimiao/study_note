@@ -37,3 +37,12 @@ title: android studio 常见异常
 ### It is currently in use by another Gradle instance
 
     find ~/.gradle -type f -name "*.lock" | while read f; do rm $f; done
+
+
+### Could not find manifest-merger.jar (com.android.tools.build:manifest-merger:26.1.2). Searched in the following locations: https://jcenter.bintray.com/com/android/tools/build/manifest-merger/26.1.2/manifest-merger-26.1.2.jar
+
+最外层 build.gradle: google()需要放在jcenter()前面
+
+### ERROR: Timeout waiting to lock Build Output Cleanup Cache (*/.gradle/buildOutputCleanup). It is currently in use by another Gradle instance.
+
+find ~/.gradle -type f -name "*.lock" -delete
