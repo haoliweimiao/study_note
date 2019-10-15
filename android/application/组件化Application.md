@@ -1,0 +1,7 @@
+# 组件化Application
+
+## Application使用的4种情况
++	如果功能module有Application，主module没有自定义Application，这时会自然引用功能module中的Application。
++	如果主module有自定义Application，而其他module没有，自动引入主module的Application。
++	如果功能module有两个自定义Application，那么需要解决冲突，每个功能module都需要添加上tools:replace字段。如果只是漏加入，那么Gradle会报出和上面一样的提示。全部替换完成后，Application最终会载入后编译的module的Application。
++	如果主module中有自定义的Application，其他功能module也有自定义的Application，在主module中添加tools:replace解决冲突后，会发现最后编译的主module的Application在AndroidManifest中。
