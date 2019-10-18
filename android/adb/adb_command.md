@@ -100,7 +100,14 @@ adb shell pm clear <PACKAGE>
 
 ## 打印显示活动名称
 打印最上层的Activity名称(当前显示的Avctivity)
-~~~ shell
+
+bat command
+~~~ bat
 adb shell dumpsys activity | findstr "mFocusedActivity"
+~~~
+
+shell command
+~~~ shell
+adb shell dumpsys activity | grep "mFocusedActivity"
 ~~~
 
