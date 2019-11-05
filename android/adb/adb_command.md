@@ -10,6 +10,7 @@
 + [选择设备](#选择设备)
 + [上传、下拉文件](#上传、下拉文件)
 + [启动应用](#启动应用)
++ [关闭应用](#关闭应用)
 + [打印屏幕屏幕分辨率](#打印屏幕屏幕分辨率)
 + [输出安装包的APK路径](#输出安装包的APK路径)
 + [应用数据清除](#应用数据清除)
@@ -80,6 +81,11 @@ adb shell am start -n com.zkteco.android.checkagedemo/com.zkteco.android.checkag
 # 关闭APK，在终端直接输入：
 adb shell am force-stop 包名
 # 比如要关闭camera，就输入 adb shell am force-stop com.android.camera 即可。
+~~~
+
+## 关闭应用
+~~~ shell
+adb shell am force-stop com.some.package
 ~~~
 
 ## 打印屏幕屏幕分辨率
