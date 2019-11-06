@@ -1,6 +1,10 @@
+# Point
+
+~~~ c++
 int int_val=233;
 int * point;
-point=&int_val;//point = int_val 的地址
+//point = int_val 的地址
+point=&int_val;
 //* point == int_val
 * point = * point + 1;//int_val = * point = 234
 
@@ -88,3 +92,4 @@ int sum_arr(const int *start,const int *end){
 int sloth = 3;
 const int * ps = &sloth;//ps=>sloth地址 无法通过ps修改sloth的值
 int * const finger = &sloth;//无法修改 finger的指向，但允许修改sloth的值
+~~~
