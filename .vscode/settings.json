@@ -1,18 +1,13 @@
 {
-    "files.associations": {
-        "__locale": "cpp",
-        "stdbool.h": "c",
-        "time.h": "c",
-        "string.h": "c",
-        "stdlib.h": "c",
-        "stdio.h": "c",
-        "termios.h": "c",
-        "unistd.h": "c",
-        "types.h": "c",
-        "fcntl.h": "c",
-        "signal.h": "c",
-        "poll.h": "c"
-    },
-    "java.dependency.packagePresentation": "flat",
-    "C_Cpp.default.configurationProvider": "go2sh.cmake-integration"
+	"files.associations": {
+		"*.txt": "plaintext",
+		"types.h": "c",
+		"stdint.h": "c",
+		"fcntl.h": "c",
+		"signal.h": "c",
+		"time.h": "c",
+		"stdbool.h": "c",
+		"poll.h": "c",
+		"ostream": "c"
+	}
 }

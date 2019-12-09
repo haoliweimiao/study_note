@@ -6,13 +6,15 @@ title:通过Uri获取文件绝对路径
 
 ## API < 19
 
+~~~ java
     /**
-     * 获取小于api19时获取相册中图片真正的uri
-     * 对于路径是：content://media/external/images/media/33517这种的，需要转成/storage/emulated/0/DCIM/Camera/IMG_20160807_133403.jpg路径，也是使用这种方法
-     * @param context
-     * @param uri
-     * @return
-     */
+    * 获取小于api19时获取相册中图片真正的uri
+    * 对于路径是：content://media/external/images/media/33517这种的，
+    * 需要转成/storage/emulated/0/DCIM/Camera/IMG_20160807_133403.jpg径，也是使用这种方法
+    * @param context
+    * @param uri
+    * @return
+    */
     public static String getFilePath_below19(Context context,Uri uri) {
         //这里开始的第二部分，获取图片的路径：低版本的是没问题的，但是sdk>19会获取不到  
         Cursor cursor = null;
@@ -34,10 +36,12 @@ title:通过Uri获取文件绝对路径
         }
         return path;
     }
+~~~
 
 
 ## API >= 19
 
+~~~ java
     /**
      * @param context 上下文对象
      * @param uri     当前相册照片的Uri
@@ -142,3 +146,4 @@ title:通过Uri获取文件绝对路径
     public static boolean isGooglePlayPhotosUri(Uri     uri) {
         return  "com.google.android.apps.photos.contentprovi der".equals(uri.getAuthority());
     }
+~~~
