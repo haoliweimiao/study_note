@@ -29,7 +29,7 @@ startActivity(intent);
 ~~~ java
 Intent intent = new Intent();
 intent.setClassName("App包名","Activity路径");
-intent.setCompoent(new ComponentName("App包名","Activity路径"));
+intent.setComponent(new ComponentName("App包名","Activity路径"));
 startActivity(intent);
 ~~~
 

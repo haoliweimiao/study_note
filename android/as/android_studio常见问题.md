@@ -46,3 +46,13 @@ title: android studio 常见异常
 ### ERROR: Timeout waiting to lock Build Output Cleanup Cache (*/.gradle/buildOutputCleanup). It is currently in use by another Gradle instance.
 
 find ~/.gradle -type f -name "*.lock" -delete
+
+### buildOutput.apkData must not be null
+
+删除build文件下outputs文件夹
+
+### ERROR: Cause: unable to find valid certification path to requested target
+
++ 手动添加证书
++ jcenter() > jcenter{ url 'http://jcenter.bintray.com' } 
++ 切换编译的jdk，不用Android Studio自带的
