@@ -66,3 +66,38 @@ public class MoveView extends View {
 }
 
 ~~~
+
+## 动画改变位置
+
+~~~ xml
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 添加android:fillAfter="true"，动画执行完成，View不会返回原先位置 -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true">
+    <translate
+        android:duration="1000"
+        android:fromXDelta="0"
+        android:toXDelta="300" />
+</set>
+~~~
+
+~~~ java
+//View动画并不能改变View的位置参数
+view.setAnimation(AnimationUtils.loadAnimation(this, R.anim.anim_move_x));
+~~~
+
+~~~ java
+//使用属性动画移动
+ObjectAnimator.ofFloat(view, "translationX", 0, 300).setDuration(1000).start();
+~~~
+
+## scroll
+
+~~~ java
+        mBinding.tv.post(()->{
+			//View现有位置再次移动
+            mBinding.tv.scrollBy(-30, -30);
+			//将View移动到10，10
+            mBinding.tv.scrollTo(10, 10);
+        });
+~~~
