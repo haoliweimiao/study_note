@@ -15,6 +15,7 @@
 + [输出安装包的APK路径](#输出安装包的APK路径)
 + [应用数据清除](#应用数据清除)
 + [打印显示活动名称](#打印显示活动名称)
++ [卸载应用](#卸载应用)
 
 ## adb重启
 ~~~ shell
@@ -115,5 +116,25 @@ adb shell dumpsys activity | findstr "mFocusedActivity"
 shell command
 ~~~ shell
 adb shell dumpsys activity | grep "mFocusedActivity"
+~~~
+
+## 卸载应用
+
+~~~ shell
+adb shell pm list packages -s 找到要删除的包名
+
+# 获取包名地址
+adb shell pm path com.xxx.xxx
+package:/data/app/xxx/base.apk
+
+# 挂载系统读写权限
+adb remount
+remount succeeded
+
+# 删除包
+adb shell rm /data/app/com.xxx.xxx-1/base.apk
+
+# 重启后ok
+adb reboot
 ~~~
 

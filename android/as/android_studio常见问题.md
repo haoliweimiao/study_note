@@ -56,3 +56,13 @@ find ~/.gradle -type f -name "*.lock" -delete
 + 手动添加证书
 + jcenter() > jcenter{ url 'http://jcenter.bintray.com' } 
 + 切换编译的jdk，不用Android Studio自带的
+
+### env: bash\r: No such file or directory
+
+Android Studio 脚本打包出现该错误，解决方法：
+1. 新建一个Android项目，将新项目中的gradlew文件复制进来
+2. chmod 777 **.sh
+
+### Location specified by ndk.dir (**) did not contain a valid NDK and and couldn't be used
+
+在local.properties文件中，ndk.dir项填入正确的ndk路径(项目未使用到ndk，可以直接删除该项)

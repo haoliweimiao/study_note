@@ -7,6 +7,7 @@ adb shell am start com.android.settings/com.android.settings.SecuritySettings
 
 手机无线信息
 adb shell am start com.android.settings/com.android.settings.RadioInfo
+adb shell am start com.android.settings/com.android.settings.ApplicationSettings
 
 更多页面
 com.android.settings.AccessibilitySettings 辅助功能设置 
