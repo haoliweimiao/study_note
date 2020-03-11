@@ -16,6 +16,7 @@
 + [应用数据清除](#应用数据清除)
 + [打印显示活动名称](#打印显示活动名称)
 + [卸载应用](#卸载应用)
++ [发送广播](#发送广播)
 
 ## adb重启
 ~~~ shell
@@ -138,3 +139,20 @@ adb shell rm /data/app/com.xxx.xxx-1/base.apk
 adb reboot
 ~~~
 
+## 发送广播
+
+~~~ shell
+adb shell am broadcast 后面的参数有：
+
+[-a <ACTION>]
+[-d <DATA_URI>]
+[-t <MIME_TYPE>] 
+[-c <CATEGORY> [-c <CATEGORY>] ...] 
+[-e|--es <EXTRA_KEY> <EXTRA_STRING_VALUE> ...] 
+[--ez <EXTRA_KEY> <EXTRA_BOOLEAN_VALUE> ...] 
+[-e|--ei <EXTRA_KEY> <EXTRA_INT_VALUE> ...] 
+[-n <COMPONENT>]
+[-f <FLAGS>] [<URI>]
+
+adb shell am broadcast -a com.android.test --es test_string "this is test string" --ei test_int 100 --ez test_boolean true
+~~~
