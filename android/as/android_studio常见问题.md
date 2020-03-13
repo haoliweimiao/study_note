@@ -47,6 +47,9 @@ title: android studio 常见异常
 
 find ~/.gradle -type f -name "*.lock" -delete
 
+ps -A | grep gradle
+sudo kill -9 <process ID>
+
 ### buildOutput.apkData must not be null
 
 删除build文件下outputs文件夹
