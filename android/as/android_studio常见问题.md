@@ -65,6 +65,7 @@ sudo kill -9 <process ID>
 Android Studio 脚本打包出现该错误，解决方法：
 1. 新建一个Android项目，将新项目中的gradlew文件复制进来
 2. chmod 777 **.sh
+3. 更换gradlew文件(该文件可能无法正常使用导致)
 
 ### Location specified by ndk.dir (**) did not contain a valid NDK and and couldn't be used
 
