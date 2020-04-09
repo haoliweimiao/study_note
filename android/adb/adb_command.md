@@ -17,6 +17,8 @@
 + [打印显示活动名称](#打印显示活动名称)
 + [卸载应用](#卸载应用)
 + [发送广播](#发送广播)
++ [截屏](#截屏)
++ [录屏](#录屏)
 
 ## adb重启
 ~~~ shell
@@ -156,4 +158,25 @@ adb shell am broadcast 后面的参数有：
 
 adb shell am broadcast -a com.android.test --es test_string "this is test string" --ei test_int 100 --ez test_boolean true
 adb shell am broadcast -a com.zkteco.android.action_log_switch_update --ez isShowLog true
+~~~
+
+## 截屏
+
+~~~ shell
+#（保存到SDCard）
+adb shell /system/bin/screencap -p /sdcard/screenshot.png
+# 从SD卡导出到电脑，注意 F:\\mvp 为电脑路径，必须存在
+adb pull /sdcard/screenshot.png F:\\mvp（保存到电脑）
+~~~
+
+## 录屏
+
+~~~ shell
+adb shell screenrecord /sdcard/demo.mp4
+# 限制视频录制时间为10s,如果不限制,默认180s
+adb shell screenrecord  --time-limit 10 /sdcard/demo.mp4
+# 指定视频分辨率大小
+adb shell screenrecord --size 1280*720 /sdcard/demo.mp4
+# 指定视频的比特率为6Mbps,如果不指定,默认为4Mbps.
+adb shell screenrecord --bit-rate 6000000 /sdcard/demo.mp4
 ~~~
