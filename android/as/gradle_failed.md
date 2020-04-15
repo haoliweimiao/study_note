@@ -34,3 +34,20 @@ allprojects {
 2.
 gradle-wrapper.properties:
 distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.1-all.zip
+
+
+### Could not create service of type DefaultGeneralCompileCaches using GradleScopeCompileServices.createGeneralCompileCaches().
+
+~~~ shell
+> Task :app:compileDebugJavaWithJavac FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugJavaWithJavac'.
+> Could not create service of type DefaultGeneralCompileCaches using GradleScopeCompileServices.createGeneralCompileCaches().
+
+# 解决方法，执行一次一下命令，并且编译通过
+./gradlew compileDebugJavaWithJavac --stacktrace
+~~~
+
