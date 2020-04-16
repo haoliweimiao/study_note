@@ -10,6 +10,7 @@
 + [提交pr](#提交pr)
 + [移除本地commit](#移除本地commit)
 + [存储修改](#存储修改)
++ [删除文件夹](#删除文件夹)
 
 ## 查看远程分支
 ~~~ shell
@@ -76,4 +77,12 @@ $ git stash clear 清空
 # 提交test分支到远程仓库
 $ git checkout b test
 $ git push origin HEAD -u
+~~~
+
+## 删除文件夹
+
+~~~ shell
+$ git rm -r one-of-the-directories
+$ git commit . -m "Remove duplicated directory"
+$ git push origin <your-git-branch> (typically 'master', but not always)
 ~~~
