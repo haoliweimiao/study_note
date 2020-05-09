@@ -77,6 +77,11 @@ $ git stash clear 清空
 # 提交test分支到远程仓库
 $ git checkout b test
 $ git push origin HEAD -u
+
+# 创建并切换到分支feature-branch
+$ git checkout -b feature-branch
+# 推送本地的feature-branch(冒号前面的)分支到远程origin的feature-branch(冒号后面的)分支(没有会自动创建)
+$ git push origin feature-branch:feature-branch
 ~~~
 
 ## 删除文件夹
