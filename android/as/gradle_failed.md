@@ -51,3 +51,11 @@ Execution failed for task ':app:compileDebugJavaWithJavac'.
 ./gradlew compileDebugJavaWithJavac --stacktrace
 ~~~
 
+# No toolchains found in the NDK toolchains folder for ABI with prefix
+
+~~~ shell
+# on Mac
+cd  ~/Library/Android/sdk/ndk-bundle/toolchains
+ln -s aarch64-linux-android-4.9 mips64el-linux-android
+ln -s arm-linux-androideabi-4.9 mipsel-linux-android
+~~~
