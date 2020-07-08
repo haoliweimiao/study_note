@@ -1,6 +1,7 @@
 # git question
 
 + [Git如何恢复已经删除的branch](#Git如何恢复已经删除的branch)
++ [Git链接新仓库](#Git链接新仓库)
 
 ## Git如何恢复已经删除的branch
 
@@ -17,4 +18,13 @@ Reflog: HEAD@{0} (Von <von.wu@zkteco.com>)
 # 还原
 git rebase 83c9f554089b43a4f5006614a3a41074fe9de898
 
+~~~
+
+## Git链接新仓库
+
+~~~ shell
+# 移除原有链接
+git remote remove origin
+# 设置新的链接
+git remote add origin git@gitlab.xxxxxx.git
 ~~~
