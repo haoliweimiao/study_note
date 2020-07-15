@@ -19,6 +19,7 @@
 + [发送广播](#发送广播)
 + [截屏](#截屏)
 + [录屏](#录屏)
++ [设置音量](#设置音量)
 
 ## adb重启
 ~~~ shell
@@ -179,4 +180,20 @@ adb shell screenrecord  --time-limit 10 /sdcard/demo.mp4
 adb shell screenrecord --size 1280*720 /sdcard/demo.mp4
 # 指定视频的比特率为6Mbps,如果不指定,默认为4Mbps.
 adb shell screenrecord --bit-rate 6000000 /sdcard/demo.mp4
+~~~
+
+## 设置音量
+
+~~~ shell
+media volume:  the options are as follows: 
+    --stream STREAM selects the stream to control, see AudioManager.STREAM_*
+                    controls AudioManager.STREAM_MUSIC if no stream is specified
+    --set INDEX     sets the volume index value
+    --adj DIRECTION adjusts the volume, use raise|same|lower for the direction
+    --get           outputs the current volume
+    --show          shows the UI during the volume change
+examples:
+    adb shell media volume --show --stream 3 --set 11
+    adb shell media volume --stream 0 --adj lower
+    adb shell media volume --stream 3 --get
 ~~~
