@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestBeanAIDLActivity" />
+        <activity android:name=".TestBinderAIDLActivity" />
     </application>
 
 </manifest>

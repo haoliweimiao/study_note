@@ -11,7 +11,6 @@ import java.util.List;
 
 public class AIDLTestBeanService extends Service {
 
-    //包含Book对象的list
     private List<TestBean> mDatas = new ArrayList<>();
 
     private final TestBeanManager.Stub testBeanManager = new TestBeanManager.Stub() {

@@ -98,4 +98,8 @@ public class AIDLClientMainActivity extends AppCompatActivity {
         startActivity(new Intent(this, TestBeanAIDLActivity.class));
     }
 
+    public void toTestBinderPage(View view) throws Exception {
+        startActivity(new Intent(this, TestBinderAIDLActivity.class));
+    }
+
 }

@@ -17,12 +17,6 @@ import com.hlw.android.aidlserver.TestBeanManager;
 
 import java.util.List;
 
-/**
- * 客户端的AIDLActivity.java
- * 由于测试机的无用debug信息太多，故log都是用的e
- * <p/>
- * Created by lypeer on 2016/7/17.
- */
 public class TestBeanAIDLActivity extends AppCompatActivity {
 
     private TestBeanManager testBeanManager = null;

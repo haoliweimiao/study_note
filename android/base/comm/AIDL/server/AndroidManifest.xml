@@ -25,6 +25,15 @@
                 <action android:name="com.hlw.aidldemo.test_bean_service" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".AIDLBinderService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.hlw.aidldemo.binder_service" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
