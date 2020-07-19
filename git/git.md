@@ -12,6 +12,7 @@
 + [移除本地commit](#移除本地commit)
 + [存储修改](#存储修改)
 + [删除文件夹](#删除文件夹)
++ [删除远程仓库的错误提交](#删除远程仓库的错误提交)
 
 ## 查看远程分支
 ~~~ shell
@@ -96,4 +97,13 @@ $ git push origin feature-branch:feature-branch
 $ git rm -r one-of-the-directories
 $ git commit . -m "Remove duplicated directory"
 $ git push origin <your-git-branch> (typically 'master', but not always)
+~~~
+
+## 删除远程仓库的错误提交
+```不是必须要回退，不建议这样做！！！```
+~~~ shell
+# 强制返回上次的版本（~1回退到上一次提交，~2回退到上两次提交，以此类推）
+git reset --hard HEAD~1
+# 将本次变更强行推送至服务器；这样在服务器上就能回退到你想回退的位置。
+git push --force
 ~~~
