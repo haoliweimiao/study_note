@@ -59,3 +59,19 @@ cd  ~/Library/Android/sdk/ndk-bundle/toolchains
 ln -s aarch64-linux-android-4.9 mips64el-linux-android
 ln -s arm-linux-androideabi-4.9 mipsel-linux-android
 ~~~
+
+# kotlin 插件导致的无法编译问题
+
+``` gradle
+repositories {
+        # 添加该仓库
+        mavenCentral()
+        google()
+        jcenter()
+    }
+dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.2'
+        # 切换可用版本
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
+    }
+```
