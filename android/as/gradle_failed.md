@@ -75,3 +75,11 @@ dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
     }
 ```
+
+# Could not resolve com.android.support:appcompat-v7:26.+.
+
+~~~ gradle
+# implementation 'com.android.support:appcompat-v7:26.+'
+# 修改
+implementation 'com.android.support:appcompat-v7:26.1.0'
+~~~
