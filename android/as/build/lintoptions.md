@@ -44,7 +44,7 @@ android {
         //  true--所有正式版构建执行规则生成崩溃的lint检查，如果有崩溃问题将停止构建
         checkReleaseBuilds true
         // 在发布版本编译时检查(即使不包含lint目标)，指定问题的规则生成崩溃
-        <!-- fatal 'NewApi', 'InlineApi' -->
+        // fatal 'NewApi', 'InlineApi'
         fatal 'NewApi', 'InlinedApi'
         // 指定问题的规则生成错误
         error 'Wakelock', 'TextViewEdits'
@@ -53,7 +53,7 @@ android {
         // 忽略指定问题的规则(同关闭检查)
         ignore 'TypographyQuotes'
         // 覆盖 Lint 规则的严重程度，例如：
-        severityOverrides ["MissingTranslation": LintOptions.SEVERITY_WARNING]
+        // severityOverrides ["MissingTranslation": LintOptions.SEVERITY_WARNING]
     }
 }
 ~~~

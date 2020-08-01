@@ -51,7 +51,7 @@ Execution failed for task ':app:compileDebugJavaWithJavac'.
 ./gradlew compileDebugJavaWithJavac --stacktrace
 ~~~
 
-# No toolchains found in the NDK toolchains folder for ABI with prefix
+### No toolchains found in the NDK toolchains folder for ABI with prefix
 
 ~~~ shell
 # on Mac
@@ -60,7 +60,7 @@ ln -s aarch64-linux-android-4.9 mips64el-linux-android
 ln -s arm-linux-androideabi-4.9 mipsel-linux-android
 ~~~
 
-# kotlin 插件导致的无法编译问题
+### kotlin 插件导致的无法编译问题
 
 ``` gradle
 repositories {
@@ -76,10 +76,18 @@ dependencies {
     }
 ```
 
-# Could not resolve com.android.support:appcompat-v7:26.+.
+### Could not resolve com.android.support:appcompat-v7:26.+.
 
 ~~~ gradle
 # implementation 'com.android.support:appcompat-v7:26.+'
 # 修改
 implementation 'com.android.support:appcompat-v7:26.1.0'
 ~~~
+
+### Cannot access androidx.lifecycle.HasDefaultViewModelProviderFactory
+
+引入
+``` gradle
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
+```
