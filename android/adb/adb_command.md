@@ -159,6 +159,9 @@ adb shell am broadcast 后面的参数有：
 
 adb shell am broadcast -a com.android.test --es test_string "this is test string" --ei test_int 100 --ez test_boolean true
 adb shell am broadcast -a com.zkteco.android.action_log_switch_update --ez isShowLog true
+
+# android 8.0+
+adb shell am broadcast -f 0x01000000 -a xxx.xxx.xxx --es test "test_str"
 ~~~
 
 ## 截屏
