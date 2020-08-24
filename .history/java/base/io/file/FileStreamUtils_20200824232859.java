@@ -118,9 +118,6 @@ public class FileStreamUtils {
    * @param dest dest file
    */
   public static void copyFast(String src, String dest) {
-    if (isEmpty(src) || isEmpty(dest)) {
-      return;
-    }
     BufferedOutputStream bos = null;
     BufferedInputStream bis = null;
     try {

@@ -77,9 +77,6 @@ public class FileStreamUtils {
    * @param dest dest file
    */
   public static void copy(String src, String dest) {
-    if (isEmpty(src) || isEmpty(dest)) {
-      return;
-    }
     FileInputStream inputStream = null;
     FileOutputStream outputStream = null;
     try {
@@ -112,45 +109,42 @@ public class FileStreamUtils {
   }
 
   /**
-   * copy src content to dest file
-   *
-   * @param src  src file
-   * @param dest dest file
-   */
-  public static void copyFast(String src, String dest) {
-    if (isEmpty(src) || isEmpty(dest)) {
-      return;
-    }
-    BufferedOutputStream bos = null;
-    BufferedInputStream bis = null;
-    try {
-      bos = new BufferedOutputStream(new FileOutputStream(src));
-      bis = new BufferedInputStream(new FileInputStream(dest));
-      int len = 0;
-      byte[] bytes = new byte[1024];
-      while ((len = bis.read(bytes)) != -1) {
-        bos.write(bytes, 0, len);
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    } finally {
-      if (bis != null) {
+     * copy src content to dest file
+     *
+     * @param src  src file
+     * @param dest dest file
+     */
+    public static void copyFast(String src, String dest) {
+        BufferedOutputStream bos = null;
+        BufferedInputStream bis = null;
         try {
-          bis.close();
+            bos = new BufferedOutputStream(new FileOutputStream(src));
+            bis = new BufferedInputStream(new FileInputStream(dest));
+            int len = 0;
+            byte[] bytes = new byte[1024];
+            while ((len = bis.read(bytes)) != -1) {
+                bos.write(bytes, 0, len);
+            }
         } catch (IOException e) {
-          e.printStackTrace();
-        }
-      }
+            e.printStackTrace();
+        } finally {
+            if (bis != null) {
+                try {
+                    bis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
-      if (bos != null) {
-        try {
-          bos.close();
-        } catch (IOException e) {
-          e.printStackTrace();
+            if (bos != null) {
+                try {
+                    bos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-      }
     }
-  }
 
   /**
    * check str is null
