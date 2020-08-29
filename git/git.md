@@ -13,6 +13,8 @@
 + [存储修改](#存储修改)
 + [删除文件夹](#删除文件夹)
 + [删除远程仓库的错误提交](#删除远程仓库的错误提交)
++ [Git如何恢复已经删除的branch](#Git如何恢复已经删除的branch)
++ [Git链接新仓库](#Git链接新仓库)
 
 ## 查看远程分支
 ~~~ shell
@@ -106,4 +108,32 @@ $ git push origin <your-git-branch> (typically 'master', but not always)
 git reset --hard HEAD~1
 # 将本次变更强行推送至服务器；这样在服务器上就能回退到你想回退的位置。
 git push --force
+~~~
+
+
+
+## Git如何恢复已经删除的branch
+
+~~~ shell
+# 创建一个还原的分支
+git checkout -b test
+# 查看本地的log
+git log -g
+
+commit 83c9f554089b43a4f5006614a3a41074fe9de898 (HEAD -> branch_temperature, origin/branch/temperature)
+Reflog: HEAD@{0} (XXX <xxx.wu@xxx.com>)
+......
+
+# 还原
+git rebase 83c9f554089b43a4f5006614a3a41074fe9de898
+
+~~~
+
+## Git链接新仓库
+
+~~~ shell
+# 移除原有链接
+git remote remove origin
+# 设置新的链接
+git remote add origin git@gitlab.xxxxxx.git
 ~~~
