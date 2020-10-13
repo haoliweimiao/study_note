@@ -1,7 +1,21 @@
 # Gradle问题
 
++ [代理配置](#代理配置)
 + [删除代理配置](#删除代理配置)
 + [gradle下载](#gradle下载)
+
+## 代理配置
+``` shell
+open ~/.gradle/gradle.properties
+```
+
+添加内容如下
+```
+systemProp.http.proxyHost=127.0.0.1
+systemProp.http.proxyPort=1080
+systemProp.https.proxyHost=127.0.0.1
+systemProp.https.proxyPort=1080
+```
 
 ## 删除配置文件
 ~/.gradle/gradle.properties
