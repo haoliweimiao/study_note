@@ -15,6 +15,7 @@
 + [删除远程仓库的错误提交](#删除远程仓库的错误提交)
 + [Git如何恢复已经删除的branch](#Git如何恢复已经删除的branch)
 + [Git链接新仓库](#Git链接新仓库)
++ [合并合并请求]](#合并合并请求)
 
 ## 查看远程分支
 ~~~ shell
@@ -137,3 +138,12 @@ git remote remove origin
 # 设置新的链接
 git remote add origin git@gitlab.xxxxxx.git
 ~~~
+
+## 合并合并请求
+``` shell
+git fetch origin
+git checkout -b bugfix origin/bugfix
+git checkout dev
+git merge --no-ff bugfix
+git push origin dev
+```
