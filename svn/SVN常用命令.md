@@ -12,6 +12,7 @@
 + [比较差异](#比较差异)
 + [将两个版本之间的差异合并到当前文件](#将两个版本之间的差异合并到当前文件)
 + [SVN帮助](#SVN帮助)
++ [创建分支](#创建分支)
 
 ## 将文件checkout到本地目录
 svn checkout path（path是服务器上的目录）
@@ -58,3 +59,8 @@ svn merge -r m:n path
 ## SVN帮助
 svn help
 svn help ci
+
+## 创建分支
+``` shell
+svn cp -m "create branch"  http://server/test/trunk  http://server/test/branches/future
+```
