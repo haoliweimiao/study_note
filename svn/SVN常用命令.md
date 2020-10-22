@@ -13,6 +13,8 @@
 + [将两个版本之间的差异合并到当前文件](#将两个版本之间的差异合并到当前文件)
 + [SVN帮助](#SVN帮助)
 + [创建分支](#创建分支)
++ [提交本地文件夹](#提交本地文件夹)
++ [删除远程仓库文件夹](#删除远程仓库文件夹)
 
 ## 将文件checkout到本地目录
 svn checkout path（path是服务器上的目录）
@@ -63,4 +65,17 @@ svn help ci
 ## 创建分支
 ``` shell
 svn cp -m "create branch"  http://server/test/trunk  http://server/test/branches/future
+```
+
+
+
+## 提交本地文件夹
+``` shell
+mkdir test_commit
+svn -m "创建test_commit" mkdir http://192.168.1.1/svn/branches/test_commit/
+```
+
+## 删除远程仓库文件夹
+``` shell
+svn -m "删除错误仓库" delete http://192.168.1.1/svn/branches/test_commit/
 ```
