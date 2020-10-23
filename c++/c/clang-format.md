@@ -8,6 +8,127 @@ formatRet=`clang-format $file`
 echo $formatRet > $file
 ```
 
+## 格式化脚本
+``` shell
+#!/bin/bash
+
+# is format is folder file
+function isFormatFile(){
+    file=$1
+
+    result=$(echo $file | grep "Debug$")
+    if [ -n "$result" ]; then
+        return 0;
+    fi
+
+    result=$(echo $file | grep "Release$")
+    if [ -n "$result" ]; then
+        return 0;
+    fi
+
+    result=$(echo $file | grep "CMakeFiles$")
+    if [ -n "$result" ]; then
+        return 0;
+    fi
+
+    result=$(echo $file | grep "\.build$")
+    if [ -n "$result" ]; then
+        return 0;
+    fi
+
+    result=$(echo $file | grep "\.xcodeproj$")
+    if [ -n "$result" ]; then
+        return 0;
+    fi
+
+    result=$(echo $file | grep "CMakeScripts$")
+    if [ -n "$result" ]; then
+        return 0;
+    fi
+
+    return 1;
+}
+
+# is c/cpp file
+function isCppFile(){
+    file=$1
+    # .c$: .代表任意字符，使用\.转义
+    result=$(echo $file | grep "\.a$")
+    if [ -n "$result" ]; then
+        return 0;
+    fi
+
+    result=$(echo $file | grep "\.c$")
+    if [ -n "$result" ]; then
+        return 1;
+    fi
+    
+    result=$(echo $file | grep "\.cpp$")
+    if [ -n "$result" ]; then
+        return 1;
+    fi
+    
+    result=$(echo $file | grep "\.h$")
+    if [ -n "$result" ]; then
+        return 1;
+    fi
+    
+    result=$(echo $file | grep "\.hpp$")
+    if [ -n "$result" ]; then
+        return 1;
+    fi
+    
+    return 0;
+}
+
+# 格式化file
+function formatFile(){
+    file=$1
+    isCppFile $file
+    isC=$?
+    if [ "$isC" -eq "1" ]; then
+        {
+            # echo "format c file $file"
+            # formatRet=`clang-format $file`
+            # # 格式化后的代码覆盖写入
+            # echo $formatRet > $file
+            clang-format -style=llvm -i $file
+        }
+    fi
+}
+
+# 遍历循环脚本当前路径所有文件
+function foreachFile(){
+    directory=$1
+    # echo "####" $directory
+    for file in `ls $directory`
+    do
+        isFormatFile $file
+        isFormat=$?
+        if [ "$isFormat" -eq "0" ]; then
+            {
+                continue
+            }
+        fi
+
+        aFile=$directory/$file
+        if [ -d $aFile ]
+        then
+            ret=`foreachFile $aFile &`
+            echo $ret
+        else
+            #     echo $file is file
+            formatFile $aFile
+        fi
+    done
+    echo format $directory finish
+}
+
+directory=$PWD
+echo now path: ${directory}
+foreachFile ${directory}
+```
+
 
 ## 配置文件
 

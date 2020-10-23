@@ -67,8 +67,6 @@ svn help ci
 svn cp -m "create branch"  http://server/test/trunk  http://server/test/branches/future
 ```
 
-
-
 ## 提交本地文件夹
 ``` shell
 mkdir test_commit
