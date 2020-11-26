@@ -16,6 +16,7 @@
 + [Git如何恢复已经删除的branch](#Git如何恢复已经删除的branch)
 + [Git链接新仓库](#Git链接新仓库)
 + [合并合并请求]](#合并合并请求)
++ [无法切换分支]](#无法切换分支)
 
 ## 查看远程分支
 ~~~ shell
@@ -147,3 +148,19 @@ git checkout dev
 git merge --no-ff bugfix
 git push origin dev
 ```
+
+
+## 无法切换分支
+
+git切换分支报错：error: The following untracked working tree files would be overwritten by checkout
+
+``` shell
+(慎用，会直接删除本地git未跟踪的文件，可用来清除merge错误冲突)
+git clean -d -fx
+```
+
+ git clean 参数 
+    -n 显示将要删除的文件和目录；
+    -x -----删除忽略文件已经对git来说不识别的文件
+    -d -----删除未被添加到git的路径中的文件
+    -f -----强制运行
