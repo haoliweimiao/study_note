@@ -91,3 +91,20 @@ implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
 ```
+
+
+### Failed to read PNG signature: file does not start with PNG signature
+
+``` gradle
+ buildTypes {
+        debug {
+           // ...
+        }
+
+        release {
+            // 此处修改部分png图片在打包时报错导致无法输出apk的问题
+            crunchPngs false
+           // ...
+        }
+    }
+```
