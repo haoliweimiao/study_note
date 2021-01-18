@@ -3,6 +3,7 @@
 Google Dagger2
 
 + [命名规约](#命名规约)
++ [问题]](#问题)
 
 ## 命名规约
 
@@ -27,3 +28,9 @@ Google Dagger2
             // ...
         }
     ```
+
+
+## 问题
+1. 出现Presenter无法注入的问题
+    + Presenter实现类未使用@Inject注入构造方法
+    + Presenter实现类构造方法存在无法注入的类型(例如：提供Activity，构造注入Context)
