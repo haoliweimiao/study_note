@@ -3,9 +3,11 @@
 Windows下c++环境搭建
 
 ## 目录
-+ [Cmake配置](#Cmake配置)
-+ [Mingw64配置](#Mingw64配置)
-+ [编写hello](#编写hello)
+- [Environment Configuration](#environment-configuration)
+  - [目录](#目录)
+  - [Cmake配置](#cmake配置)
+  - [Mingw64配置](#mingw64配置)
+  - [编写hello](#编写hello)
 
 
 ##  Cmake配置
