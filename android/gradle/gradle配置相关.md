@@ -34,3 +34,9 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
 classpath "com.android.tools.build:gradle:4.0.1"
 distributionUrl=https\://services.gradle.org/distributions/gradle-6.1.1-all.zip
 ```
+
+6. 
+``` shell
+classpath "com.android.tools.build:gradle:4.1.2"
+distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
+```
