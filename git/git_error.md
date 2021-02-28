@@ -32,3 +32,16 @@ $:git fetch
 $ git rm --cached path_to_submodule (git rm --cached zkcore_library)
 需要确认该模块是否依然在git上存在，可能是被删除导致的
 ~~~
+
+## SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443
+
+检查设备是否开启代码，检查git是否配置代理
+``` shell
+# 检测配置文件
+git config --global --list
+# 取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+代理开启，检测git配置的代理端口号是否一致
